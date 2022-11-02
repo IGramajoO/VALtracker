@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4D70DD8410B7C22F7D2C3A3 /* Pods_VALtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E36AC3F97B916E3DA382DDBD /* Pods_VALtracker.framework */; };
 		D2DD410E28F803CE00D75D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410D28F803CE00D75D3A /* AppDelegate.swift */; };
 		D2DD411028F803CE00D75D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */; };
 		D2DD411228F803CE00D75D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD411128F803CE00D75D3A /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		298822F413DAE40B036ED5A2 /* Pods-VALtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VALtracker.release.xcconfig"; path = "Target Support Files/Pods-VALtracker/Pods-VALtracker.release.xcconfig"; sourceTree = "<group>"; };
+		6ADC747EE84D129DB46E628E /* Pods-VALtracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VALtracker.debug.xcconfig"; path = "Target Support Files/Pods-VALtracker/Pods-VALtracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D2DD410A28F803CE00D75D3A /* VALtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VALtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DD410D28F803CE00D75D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		D2DD411628F803D400D75D3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2DD411928F803D400D75D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2DD411B28F803D400D75D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E36AC3F97B916E3DA382DDBD /* Pods_VALtracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VALtracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D70DD8410B7C22F7D2C3A3 /* Pods_VALtracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3EBF47560B694A24917CAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ADC747EE84D129DB46E628E /* Pods-VALtracker.debug.xcconfig */,
+				298822F413DAE40B036ED5A2 /* Pods-VALtracker.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D2DD410128F803CE00D75D3A = {
 			isa = PBXGroup;
 			children = (
 				D2DD410C28F803CE00D75D3A /* VALtracker */,
 				D2DD410B28F803CE00D75D3A /* Products */,
+				CE3EBF47560B694A24917CAA /* Pods */,
+				DFCF6F5210C164A1A667AF61 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = VALtracker;
 			sourceTree = "<group>";
 		};
+		DFCF6F5210C164A1A667AF61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E36AC3F97B916E3DA382DDBD /* Pods_VALtracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2DD411E28F803D400D75D3A /* Build configuration list for PBXNativeTarget "VALtracker" */;
 			buildPhases = (
+				C8CC237C5C58BD4904FC6188 /* [CP] Check Pods Manifest.lock */,
 				D2DD410628F803CE00D75D3A /* Sources */,
 				D2DD410728F803CE00D75D3A /* Frameworks */,
 				D2DD410828F803CE00D75D3A /* Resources */,
+				40ABCC17D5C9C919C33BC311 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40ABCC17D5C9C919C33BC311 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VALtracker/Pods-VALtracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VALtracker/Pods-VALtracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VALtracker/Pods-VALtracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8CC237C5C58BD4904FC6188 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VALtracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2DD410628F803CE00D75D3A /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		D2DD411F28F803D400D75D3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADC747EE84D129DB46E628E /* Pods-VALtracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +380,7 @@
 		};
 		D2DD412028F803D400D75D3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 298822F413DAE40B036ED5A2 /* Pods-VALtracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

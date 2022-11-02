@@ -1,0 +1,6 @@
+framework module Pods_VALtracker {
+  umbrella header "Pods-VALtracker-umbrella.h"
+
+  export *
+  module * { export * }
+}
