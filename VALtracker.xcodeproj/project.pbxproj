@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		A4D70DD8410B7C22F7D2C3A3 /* Pods_VALtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E36AC3F97B916E3DA382DDBD /* Pods_VALtracker.framework */; };
 		D23E7DA5291CDB5B00B19E2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */; };
+		D23E7DA7291CEB6B00B19E2E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E7DA6291CEB6B00B19E2E /* LandingViewController.swift */; };
 		D2DD410E28F803CE00D75D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410D28F803CE00D75D3A /* AppDelegate.swift */; };
 		D2DD411028F803CE00D75D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */; };
-		D2DD411228F803CE00D75D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD411128F803CE00D75D3A /* ViewController.swift */; };
 		D2DD411528F803CE00D75D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2DD411328F803CE00D75D3A /* Main.storyboard */; };
 		D2DD411728F803D400D75D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2DD411628F803D400D75D3A /* Assets.xcassets */; };
 		D2DD411A28F803D400D75D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2DD411828F803D400D75D3A /* LaunchScreen.storyboard */; };
@@ -21,10 +21,10 @@
 		298822F413DAE40B036ED5A2 /* Pods-VALtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VALtracker.release.xcconfig"; path = "Target Support Files/Pods-VALtracker/Pods-VALtracker.release.xcconfig"; sourceTree = "<group>"; };
 		6ADC747EE84D129DB46E628E /* Pods-VALtracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VALtracker.debug.xcconfig"; path = "Target Support Files/Pods-VALtracker/Pods-VALtracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D23E7DA6291CEB6B00B19E2E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D2DD410A28F803CE00D75D3A /* VALtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VALtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DD410D28F803CE00D75D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2DD411128F803CE00D75D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D2DD411428F803CE00D75D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2DD411628F803D400D75D3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2DD411928F803D400D75D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 			children = (
 				D2DD410D28F803CE00D75D3A /* AppDelegate.swift */,
 				D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */,
-				D2DD411128F803CE00D75D3A /* ViewController.swift */,
 				D2DD411328F803CE00D75D3A /* Main.storyboard */,
+				D23E7DA6291CEB6B00B19E2E /* LandingViewController.swift */,
 				D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */,
 				D2DD411628F803D400D75D3A /* Assets.xcassets */,
 				D2DD411828F803D400D75D3A /* LaunchScreen.storyboard */,
@@ -210,8 +210,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E7DA5291CDB5B00B19E2E /* LoginViewController.swift in Sources */,
-				D2DD411228F803CE00D75D3A /* ViewController.swift in Sources */,
 				D2DD410E28F803CE00D75D3A /* AppDelegate.swift in Sources */,
+				D23E7DA7291CEB6B00B19E2E /* LandingViewController.swift in Sources */,
 				D2DD411028F803CE00D75D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
