@@ -11,6 +11,7 @@ class LaunchViewController: UIViewController {
     
     //var jsonData;
     var mmr = [[String:Any]]()
+//    var data = [[String:Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,16 @@ class LaunchViewController: UIViewController {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 print(dataDictionary)
                 print("-------------------")
-                print(dataDictionary["data"]["elo"])
+
+                let data = dataDictionary["data"] as! [String: Any]
+                for (key, value) in data {
+                   print("(\(key),\(value))")
+                }
+                
+                print("-------------------")
+                print(data["name"] as! String)
+                
+//                print(self.data)
                // let dict: [[String:Any]]() = dataDictionary["data"]
                 //print(dict{0})
               //  self.mmr = dataDictionary["data"] as! [[String:Any]]
