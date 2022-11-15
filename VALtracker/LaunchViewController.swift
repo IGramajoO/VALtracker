@@ -9,19 +9,45 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
+    @IBOutlet weak var searchTextField: UITextField!
     //var jsonData;
     var mmr = [[String:Any]]()
-
+    //    var data = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        req()
+        //req()
+        //            let MmrSearchViewController = self.storyboard?.instantiateViewController(withIdentifier: "MmrSearchViewController") as! MmrSearchViewController
+        //            MmrSearchViewController.id = searchTextField.text ?? "Tenz#6666"
+        //            self.navigationController?.pushViewController(MmrSearchViewController, animated: true)
         
-//
+        //
         
-       
+        
         // Do any additional setup after loading the view.
     }
-//    var jsonData: [String: Any]
+    
+    @IBAction func sendToSearchScreen(_ sender: Any) {
+        self.performSegue(withIdentifier: "launchVCtoMmrVC", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if(segue.identifier == "launchVCtoMmrVC"){
+            let displayVC = segue.destination as! MmrSearchViewController
+            displayVC.id = searchTextField.text
+        }
+    }
+    
+    //    var jsonData: [String: Any]
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if(segue.identifier == "launchVCtoMmrVC"){
+    //                let displayVC = segue.destination as! MmrSearchViewController
+    //                displayVC.id = searchTextField.text
+    //        }
+    //    }
+    
     
     func req(){
         let url = URL(string: "https://api.henrikdev.xyz/valorant/v1/mmr/na/petes/3333")!
@@ -35,14 +61,23 @@ class LaunchViewController: UIViewController {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 print(dataDictionary)
                 print("-------------------")
-                print(dataDictionary["data"]["elo"])
-               // let dict: [[String:Any]]() = dataDictionary["data"]
+                
+                let data = dataDictionary["data"] as! [String: Any]
+                for (key, value) in data {
+                    print("(\(key),\(value))")
+                }
+                
+                print("-------------------")
+                print(data["name"] as! String)
+                
+                //                print(self.data)
+                // let dict: [[String:Any]]() = dataDictionary["data"]
                 //print(dict{0})
-              //  self.mmr = dataDictionary["data"] as! [[String:Any]]
+                //  self.mmr = dataDictionary["data"] as! [[String:Any]]
                 //let mmrArray = self.mmr[indexPath.row]
                 //print(mmr["name"])
-              //  print(self.mmr)
-              //
+                //  print(self.mmr)
+                //
                 // TODO: Get the array of movies
                 // TODO: Store the movies in a property to use elsewhere
                 // TODO: Reload your table view data
@@ -50,16 +85,21 @@ class LaunchViewController: UIViewController {
             }
         }
         task.resume()
+        
+        
+        
+        // MARK: - Navigation
+        //  In a storyboard-based application, you will often want to do a little preparation before navigation
+        //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //        //Get the new view controller using segue.destination.
+        //        // Pass the selected object to the new view controller.
+        //        if(segue.identifier == "launchVCtoMmrVC"){
+        //            let displayVC = segue.destination as! MmrSearchViewController
+        //            displayVC.id = searchTextField.text
+        //        }
+        //    }
+        
+        
+        //}
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
