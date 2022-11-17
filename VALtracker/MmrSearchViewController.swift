@@ -6,7 +6,9 @@
 //
 
 import UIKit
+//import AlamofireImage
 import Foundation
+
 
 class MmrSearchViewController: UIViewController {
     
@@ -27,6 +29,8 @@ class MmrSearchViewController: UIViewController {
     @IBOutlet weak var eloLabel: UILabel!
     
     @IBOutlet weak var mmrLabel: UILabel!
+    
+    @IBOutlet weak var pfpImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +62,25 @@ class MmrSearchViewController: UIViewController {
                 }
                 
                 print("-------------------")
+                let imageData = data["images"] as! [String:Any]
+//                for (key, value) in imageData {
+//                    print("(\(key),\(value))")
+//                }
+                
                 self.nameLabel.text = data["name"] as! String
                 
                 self.rankLabel.text = data["currenttierpatched"] as! String
                 
                 //self.elo = data["elo"] as! Int
-                self.eloLabel.text = String(data["elo"] as! Int)
+                self.eloLabel.text = "Elo: " + String(data["elo"] as! Int)
                 
-                self.mmrLabel.text = String(data["mmr_change_to_last_game"] as! Int)
+                self.mmrLabel.text = "MMR Change " +  String(data["mmr_change_to_last_game"] as! Int)
+                
+                //FOR PFP TO SHOW NEXT TO NAME: NEEDS ALAMOFIREIMAGE
+                let pfpUrl = imageData["small"] as! String
+                //self.pfpImageView.af.setImage(withURL: pfpUrl)
+                
+                
                 //                print(self.data)
                 // let dict: [[String:Any]]() = dataDictionary["data"]
                 //print(dict{0})
