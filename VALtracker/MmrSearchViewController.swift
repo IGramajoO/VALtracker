@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import AlamofireImage
+import AlamofireImage
 import Foundation
 
 
@@ -30,6 +30,8 @@ class MmrSearchViewController: UIViewController {
     
     @IBOutlet weak var mmrLabel: UILabel!
     
+    @IBOutlet weak var rankImageView: UIImageView!
+    
     @IBOutlet weak var pfpImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -39,12 +41,14 @@ class MmrSearchViewController: UIViewController {
         nameID = String(result![0])
         tagline = String(result![1])
         print(nameID, " ", tagline)
-        req()
+        reqAccountInfo()
+        reqMmrData()
         // Do any additional setup after loading the view.
     }
     
-    func req(){
-        let url = URL(string: "https://api.henrikdev.xyz/valorant/v1/mmr/na/\(nameID)/\(tagline)")!
+    
+    func reqAccountInfo(){
+        let url = URL(string: "https://api.henrikdev.xyz/valorant/v1/account/\(nameID)/\(tagline)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -53,7 +57,7 @@ class MmrSearchViewController: UIViewController {
                 print(error.localizedDescription)
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                //print(dataDictionary)
+                print(dataDictionary)
                 print("-------------------")
                 
                 let data = dataDictionary["data"] as! [String: Any]
@@ -62,50 +66,92 @@ class MmrSearchViewController: UIViewController {
                 }
                 
                 print("-------------------")
-                let imageData = data["images"] as! [String:Any]
-//                for (key, value) in imageData {
-//                    print("(\(key),\(value))")
-//                }
                 
-                self.nameLabel.text = data["name"] as! String
-                
-                self.rankLabel.text = data["currenttierpatched"] as! String
-                
-                //self.elo = data["elo"] as! Int
-                self.eloLabel.text = "Elo: " + String(data["elo"] as! Int)
-                
-                self.mmrLabel.text = "MMR Change " +  String(data["mmr_change_to_last_game"] as! Int)
-                
-                //FOR PFP TO SHOW NEXT TO NAME: NEEDS ALAMOFIREIMAGE
-                let pfpUrl = imageData["small"] as! String
-                //self.pfpImageView.af.setImage(withURL: pfpUrl)
+                let accountImageData = data["card"] as! [String:Any]
+                let pfpUrl = URL(string:accountImageData["small"] as! String)!
+                self.pfpImageView.af.setImage(withURL: pfpUrl)
+                //                for (key, value) in imageData {
+                //                    print("(\(key),\(value))")
+                //                }
                 
                 
-                //                print(self.data)
-                // let dict: [[String:Any]]() = dataDictionary["data"]
-                //print(dict{0})
-                //  self.mmr = dataDictionary["data"] as! [[String:Any]]
-                //let mmrArray = self.mmr[indexPath.row]
-                //print(mmr["name"])
-                //  print(self.mmr)
+                
+                //FOR rank TO SHOW NEXT TO NAME: NEEDS ALAMOFIREIMAGE
+                //                let rankUrl = URL(string:rankImageData["small"] as! String)!
+                //                self.rankImageView.af.setImage(withURL: rankUrl)
                 //
-                // TODO: Get the array of movies
-                // TODO: Store the movies in a property to use elsewhere
-                // TODO: Reload your table view data
-                
             }
         }
         task.resume()
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
-        
     }
-}
+        
+        
+        func reqMmrData(){
+            let url = URL(string: "https://api.henrikdev.xyz/valorant/v1/mmr/na/\(nameID)/\(tagline)")!
+            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+            let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request) { (data, response, error) in
+                // This will run when the network request returns
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                    //                print(dataDictionary)
+                    print("-------------------")
+                    
+                    let data = dataDictionary["data"] as! [String: Any]
+                    //                for (key, value) in data {
+                    //                    print("(\(key),\(value))")
+                    //                }
+                    //
+                    //                print("-------------------")
+                    let rankImageData = data["images"] as! [String:Any]
+                    //                for (key, value) in imageData {
+                    //                    print("(\(key),\(value))")
+                    //                }
+                    print(data["name"] as! String)
+                    let name = data["name"] as! String
+                    //self.nameLabel.text = data["name"] as! String
+                    self.nameLabel.text = name
+                    
+                    let rank = data["currenttierpatched"] as! String
+                    self.rankLabel.text = rank
+                    
+                    //self.elo = data["elo"] as! Int
+                    self.eloLabel.text = "Elo: " + String(data["elo"] as! Int)
+                    
+                    self.mmrLabel.text = "MMR Change " +  String(data["mmr_change_to_last_game"] as! Int)
+                    
+                    //FOR rank TO SHOW NEXT TO NAME: NEEDS ALAMOFIREIMAGE
+                    let rankUrl = URL(string:rankImageData["small"] as! String)!
+                    self.rankImageView.af.setImage(withURL: rankUrl)
+                    
+                    //                print(self.data)
+                    // let dict: [[String:Any]]() = dataDictionary["data"]
+                    //print(dict{0})
+                    //  self.mmr = dataDictionary["data"] as! [[String:Any]]
+                    //let mmrArray = self.mmr[indexPath.row]
+                    //print(mmr["name"])
+                    //  print(self.mmr)
+                    //
+                    // TODO: Get the array of movies
+                    // TODO: Store the movies in a property to use elsewhere
+                    // TODO: Reload your table view data
+                    
+                }
+            }
+            task.resume()
+            
+            /*
+             // MARK: - Navigation
+             
+             // In a storyboard-based application, you will often want to do a little preparation before navigation
+             override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             // Get the new view controller using segue.destination.
+             // Pass the selected object to the new view controller.
+             }
+             */
+            
+        }
+    }
+

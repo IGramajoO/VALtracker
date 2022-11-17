@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31b-Gb-iwz">
-                                <rect key="frame" x="102" y="86" width="140" height="71"/>
+                                <rect key="frame" x="125" y="86" width="140" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
@@ -52,11 +52,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaG-Kb-RjI">
-                                <rect key="frame" x="16" y="10" width="92" height="91"/>
+                                <rect key="frame" x="34" y="86" width="69" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYK-Ui-E6E">
+                                <rect key="frame" x="34" y="7" width="69" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7e-NT-Fnh">
-                                <rect key="frame" x="125" y="20" width="140" height="71"/>
+                                <rect key="frame" x="125" y="7" width="140" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
@@ -70,7 +74,8 @@
                         <outlet property="eloLabel" destination="xqh-8j-322" id="Sn0-DM-Tt1"/>
                         <outlet property="mmrLabel" destination="nmG-bh-O4t" id="Hiw-1r-ZdD"/>
                         <outlet property="nameLabel" destination="o7e-NT-Fnh" id="mKy-P1-1nH"/>
-                        <outlet property="pfpImageView" destination="yaG-Kb-RjI" id="ulN-AK-Y3M"/>
+                        <outlet property="pfpImageView" destination="dYK-Ui-E6E" id="3Jh-7G-2wO"/>
+                        <outlet property="rankImageView" destination="yaG-Kb-RjI" id="Fp8-Tt-X3B"/>
                         <outlet property="rankLabel" destination="31b-Gb-iwz" id="TKX-0d-izN"/>
                     </connections>
                 </viewController>
