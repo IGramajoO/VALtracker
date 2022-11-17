@@ -104,6 +104,13 @@
                                     <segue destination="RsV-BM-tLF" kind="presentation" id="ABr-Da-cSc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Riot ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45D-pG-WJA">
+                                <rect key="frame" x="16" y="112" width="358" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kxz-1J-Ma0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -111,6 +118,7 @@
                     <navigationItem key="navigationItem" id="FVN-tE-HhU"/>
                     <connections>
                         <outlet property="IDField" destination="nCf-9j-EHa" id="EFF-Ce-axK"/>
+                        <outlet property="IDLabel" destination="45D-pG-WJA" id="ehy-0c-Oof"/>
                         <outlet property="welcomeLabel" destination="Hke-cm-tGO" id="tga-XZ-aJB"/>
                     </connections>
                 </viewController>
@@ -381,6 +389,9 @@
         <image name="Fade_Artwork_Full" width="2048" height="1860"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
