@@ -7,7 +7,7 @@ target 'VALtracker' do
 
   # Pods for VALtracker
   pod 'Parse'
-  #pod 'AlamofireImage'
+  pod 'AlamofireImage'
   #pod 'MessageInputBar'
   
 end
