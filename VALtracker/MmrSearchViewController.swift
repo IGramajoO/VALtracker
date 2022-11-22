@@ -8,6 +8,7 @@
 import UIKit
 import AlamofireImage
 import Foundation
+import SwiftUI
 
 
 class MmrSearchViewController: UIViewController {
@@ -68,8 +69,20 @@ class MmrSearchViewController: UIViewController {
                 print("-------------------")
                 
                 let accountImageData = data["card"] as! [String:Any]
+//                Image(systemName: "pfpImageView")
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(width: 20, height: 20)
+//                                    .padding(10)
+//                                    .overlay(Color.gray.opacity(0.1))
+//                                    //.overlay(Color.gray)
+//                                    .opacity(0.1)
+//                                    //.clipShape(Circle())
+                
                 let pfpUrl = URL(string:accountImageData["small"] as! String)!
                 self.pfpImageView.af.setImage(withURL: pfpUrl)
+                self.pfpImageView.tintColor = UIColor.gray
+                    //.withAlphaComponent(0.7)
                 //                for (key, value) in imageData {
                 //                    print("(\(key),\(value))")
                 //                }

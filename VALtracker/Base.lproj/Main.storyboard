@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="1749" y="16"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Matches Table View Controller-->
         <scene sceneID="Ktp-JX-9LW">
             <objects>
-                <tableViewController id="gGg-d7-uAs" sceneMemberID="viewController">
+                <tableViewController id="gGg-d7-uAs" customClass="matchesTableViewController" customModule="VALtracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="E4W-Ec-5k8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
