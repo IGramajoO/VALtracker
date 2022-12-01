@@ -12,13 +12,10 @@ class LandingViewController: UIViewController {
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
-    @IBOutlet weak var IDLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         let currentUser = PFUser.current()
         welcomeLabel.text = "Welcome, " + (currentUser?.username ?? "NULL") + "!"
-        let riotId = currentUser?["riotID"] as! String
-        IDLabel.text = "Riot ID: " + riotId
     }
     
     override func viewDidLoad() {
