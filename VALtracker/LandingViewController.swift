@@ -14,6 +14,10 @@ class LandingViewController: UIViewController {
     var ch = Character("#")
     var nameID = String()
     var tagline = String()
+    
+    var myTeamScores: [Int] = []
+    var enemyTeamScores: [Int] = []
+    var agentsPlayed: [String] = []
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
@@ -75,9 +79,7 @@ class LandingViewController: UIViewController {
                 var enemyTeamsArray = []
                 
                 //scored depedning on if the users team is red or blue. The opposite is put into enemyTeamScores
-                var myTeamScores = []
-                var enemyTeamScores = []
-                var agentsPlayed = []
+
                 var myTeam = "none"
                 var name = "noName"
                 
@@ -95,7 +97,7 @@ class LandingViewController: UIViewController {
                             keyIndexPlayer = i
                             myTeam = me["team"] as! String
                             myTeamsArray.append(myTeam)
-                            agentsPlayed.append(me["character"] as! String)
+                            self.agentsPlayed.append(me["character"] as! String)
                             break
                         }
                     }
@@ -120,19 +122,19 @@ class LandingViewController: UIViewController {
                 
                 for i in 0...4{
                     if(myTeamsArray[i] as! String == "Red"){
-                        myTeamScores.append(redTeam[i] as! Int)
-                        enemyTeamScores.append(blueTeam[i] as! Int)
+                        self.myTeamScores.append(redTeam[i] as! Int)
+                        self.enemyTeamScores.append(blueTeam[i] as! Int)
                     }
                     else{
-                        myTeamScores.append(blueTeam[i] as! Int)
-                        enemyTeamScores.append(redTeam[i] as! Int)
+                        self.myTeamScores.append(blueTeam[i] as! Int)
+                        self.enemyTeamScores.append(redTeam[i] as! Int)
                     }
                 }
                 print("##############")
-                print(myTeamScores)
-                print(enemyTeamScores)
+                print(self.myTeamScores)
+                print(self.enemyTeamScores)
                 print("^^^^^^^^^^^^^^^^^^^")
-                print(agentsPlayed)
+                print(self.agentsPlayed)
                 
                 
                 
@@ -141,14 +143,21 @@ class LandingViewController: UIViewController {
         task.resume()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "viewMatchesSegue"){
+            let displayVC = segue.destination as! MatchTableViewController
+            displayVC.myTeamScores = myTeamScores
+            displayVC.enemyTeamScores = enemyTeamScores
+            displayVC.agentsPlayed = agentsPlayed
+            
+        }
     }
-    */
+    
 
 }
