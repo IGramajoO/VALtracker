@@ -18,6 +18,8 @@ class LandingViewController: UIViewController {
     var myTeamScores: [Int] = []
     var enemyTeamScores: [Int] = []
     var agentsPlayed: [String] = []
+    var redTeamPlayers = [[String]]()
+    var blueTeamPlayers = [[String]]()
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
@@ -83,26 +85,53 @@ class LandingViewController: UIViewController {
                 var myTeam = "none"
                 var name = "noName"
                 
-                for i in 0...4{
-                    let players = arr[i]["players"] as! [String: Any]
+
+
+
+                
+                for k in 0...4{
+                    let players = arr[k]["players"] as! [String: Any]
                     let indv = players["all_players"] as! Array<Any>
+                    let testPlayers = []
+                    var redTeamP = [String]()
+                    var blueTeamP = [String]()
+                    
                     var me = indv[0] as! [String: Any]
                     var keyIndexPlayer = 0
                     
                     for i in 0...9{
                         me = indv[i] as! [String: Any]
+//                        print("==================")
+//                        print(me)
+//                        print("==================")
                         name = me["name"] as! String
                         //NAME CHANGE HERE
+                        if(me["team"] as! String == "Red"){
+                            redTeamP.append(name)
+                        }
+                        else{
+                            blueTeamP.append(name)
+                        }
+                        
                         if(name == self.nameID){
                             keyIndexPlayer = i
                             myTeam = me["team"] as! String
                             myTeamsArray.append(myTeam)
                             self.agentsPlayed.append(me["character"] as! String)
-                            break
+//                            break
                         }
                     }
+                    self.redTeamPlayers.append(redTeamP)
+                    self.blueTeamPlayers.append(blueTeamP)
+
                 }
-            
+                print("==================")
+
+                print(self.redTeamPlayers)
+                print(self.blueTeamPlayers)
+                print("==================")
+
+
                 //print(name)
                 //print(myTeam)
                 //print(myTeamsArray)
@@ -117,8 +146,8 @@ class LandingViewController: UIViewController {
                     redTeam.append(red["rounds_won"] as! Int)
                     blueTeam.append(blue["rounds_won"] as! Int)
                 }
-                print(redTeam)
-                print(blueTeam)
+//                print(redTeam)
+//                print(blueTeam)
                 
                 for i in 0...4{
                     if(myTeamsArray[i] as! String == "Red"){
@@ -130,11 +159,11 @@ class LandingViewController: UIViewController {
                         self.enemyTeamScores.append(redTeam[i] as! Int)
                     }
                 }
-                print("##############")
-                print(self.myTeamScores)
-                print(self.enemyTeamScores)
-                print("^^^^^^^^^^^^^^^^^^^")
-                print(self.agentsPlayed)
+//                print("##############")
+//                print(self.myTeamScores)
+//                print(self.enemyTeamScores)
+//                print("^^^^^^^^^^^^^^^^^^^")
+//                print(self.agentsPlayed)
                 
                 
                 
@@ -155,6 +184,8 @@ class LandingViewController: UIViewController {
             displayVC.myTeamScores = myTeamScores
             displayVC.enemyTeamScores = enemyTeamScores
             displayVC.agentsPlayed = agentsPlayed
+            displayVC.redTeam = redTeamPlayers
+            displayVC.blueTeam = blueTeamPlayers
             
         }
     }

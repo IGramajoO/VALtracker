@@ -12,6 +12,8 @@ class MatchTableViewController: UITableViewController {
     var myTeamScores: [Int] = []
     var enemyTeamScores: [Int] = []
     var agentsPlayed: [String] = []
+    var redTeam: [[String]] = []
+    var blueTeam: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,7 @@ class MatchTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        print(redTeam)
     }
     
     @objc func loadMatches(){
@@ -49,7 +51,7 @@ class MatchTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180.0;//Choose your custom row height
+        return 180.0;
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,7 +62,7 @@ class MatchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //TODO: temp value of 5, change to allow loading more matches if we want
-        return 5
+        return myTeamScores.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,6 +73,15 @@ class MatchTableViewController: UITableViewController {
 //        cell.blueTeamLabel.text = "test1\ntest2\ntest1\ntest2\ntest1"
         cell.scoreLabel.text = String(myTeamScores[indexPath.row]) + " - " + String(enemyTeamScores[indexPath.row])
         cell.agentLabel.text = agentsPlayed[indexPath.row]
+        var blueTeamNames = ""
+        var redTeamNames = ""
+        
+        for i in 0...4{
+            blueTeamNames += blueTeam[indexPath.row][i] + "\n"
+            redTeamNames += redTeam[indexPath.row][i] + "\n"
+        }
+        cell.blueTeamLabel.text = blueTeamNames
+        cell.redTeamLabel.text = redTeamNames
         
 //         cell.userNameLabel.text = user["name"] as? String
 //         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
