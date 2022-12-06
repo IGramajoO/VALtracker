@@ -18,22 +18,26 @@ class LandingViewController: UIViewController {
     var myTeamScores: [Int] = []
     var enemyTeamScores: [Int] = []
     var agentsPlayed: [String] = []
+    var mySide: [Int] = []
     var redTeamPlayers = [[String]]()
     var blueTeamPlayers = [[String]]()
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
     @IBOutlet weak var IDLabel: UILabel!
+    @IBOutlet weak var viewMatchLabel: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         let currentUser = PFUser.current()
         welcomeLabel.text = "Welcome, " + (currentUser?.username ?? "NULL") + "!"
         let riotId = currentUser?["riotID"] as! String
         IDLabel.text = "Riot ID: " + riotId
+        req()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //SPLITING NAME FROM DB HERE
         let currentUser = PFUser.current()
         id = currentUser?["riotID"] as! String
@@ -42,11 +46,11 @@ class LandingViewController: UIViewController {
         tagline = String(result![1])
         print(nameID)
         print(tagline)
-        req()
+
+
 
         // Do any additional setup after loading the view.
     }
-    
     
     @IBAction func searchById(_ sender: Any) {
         let riotID = IDField.text
@@ -56,6 +60,8 @@ class LandingViewController: UIViewController {
     }
     
     func req(){
+//        viewMatchLabel.isEnabled = false
+
         //NAME AND TAGLINE GO HERE LIKE THIS na/\(nameID)/\(tagline)
         // nameID and tagline come from the variables after the character split in ViewDidLoad before the req() call
         let url = URL(string: "https://api.henrikdev.xyz/valorant/v3/matches/na/\(nameID)/\(tagline)")!
@@ -70,12 +76,10 @@ class LandingViewController: UIViewController {
                 //                print(dataDict)
                 let arr = dataDict["data"] as! [[String: Any]]
            
-                let arrB = arr[1]["metadata"] as! [String: Any]
-                let arrA = arr[0]["metadata"] as! [String: Any]
                 // print(arrA)
                 //  print("*************")
                 // print(arrB)
-                print("***********")
+//                print("***********")
                 //either red or blue team
                 var myTeamsArray = []
                 var enemyTeamsArray = []
@@ -84,9 +88,6 @@ class LandingViewController: UIViewController {
 
                 var myTeam = "none"
                 var name = "noName"
-                
-
-
 
                 
                 for k in 0...4{
@@ -151,10 +152,12 @@ class LandingViewController: UIViewController {
                 
                 for i in 0...4{
                     if(myTeamsArray[i] as! String == "Red"){
+                        self.mySide.append(1)
                         self.myTeamScores.append(redTeam[i] as! Int)
                         self.enemyTeamScores.append(blueTeam[i] as! Int)
                     }
                     else{
+                        self.mySide.append(0)
                         self.myTeamScores.append(blueTeam[i] as! Int)
                         self.enemyTeamScores.append(redTeam[i] as! Int)
                     }
@@ -165,10 +168,10 @@ class LandingViewController: UIViewController {
 //                print("^^^^^^^^^^^^^^^^^^^")
 //                print(self.agentsPlayed)
                 
-                
-                
             }
         }
+        
+//        viewMatchLabel.alpha = 1.0
         task.resume()
     }
 
@@ -186,7 +189,7 @@ class LandingViewController: UIViewController {
             displayVC.agentsPlayed = agentsPlayed
             displayVC.redTeam = redTeamPlayers
             displayVC.blueTeam = blueTeamPlayers
-            
+            displayVC.mySide = mySide
         }
     }
     

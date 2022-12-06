@@ -14,16 +14,11 @@ class MatchTableViewController: UITableViewController {
     var agentsPlayed: [String] = []
     var redTeam: [[String]] = []
     var blueTeam: [[String]] = []
+    var mySide: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print(redTeam)
+        
     }
     
     @objc func loadMatches(){
@@ -60,31 +55,33 @@ class MatchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //TODO: temp value of 5, change to allow loading more matches if we want
+        
         return myTeamScores.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "matchViewCell", for: indexPath) as! MatchViewCell
         
-//         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
-        
-//        cell.blueTeamLabel.text = "test1\ntest2\ntest1\ntest2\ntest1"
         cell.scoreLabel.text = String(myTeamScores[indexPath.row]) + " - " + String(enemyTeamScores[indexPath.row])
         cell.agentLabel.text = agentsPlayed[indexPath.row]
         var blueTeamNames = ""
         var redTeamNames = ""
         
+        //TODO check for users 
         for i in 0...4{
-            blueTeamNames += blueTeam[indexPath.row][i] + "\n"
-            redTeamNames += redTeam[indexPath.row][i] + "\n"
+            //if red team, swap side
+            if(mySide[indexPath.row] == 1){
+                blueTeamNames += redTeam[indexPath.row][i] + "\n"
+                redTeamNames += blueTeam[indexPath.row][i] + "\n"
+            }
+            else{
+                blueTeamNames += blueTeam[indexPath.row][i] + "\n"
+                redTeamNames += redTeam[indexPath.row][i] + "\n"
+            }
         }
         cell.blueTeamLabel.text = blueTeamNames
         cell.redTeamLabel.text = redTeamNames
         
-//         cell.userNameLabel.text = user["name"] as? String
-//         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
 //
 //         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
 //         let data = try? Data(contentsOf: imageUrl!)
@@ -94,9 +91,6 @@ class MatchTableViewController: UITableViewController {
 //             cell.profileImage.image = UIImage(data: imageData)
 //         }
 //
-//         cell.setFavorited(tweetArray[indexPath.row]["favorited"] as! Bool)
-//         cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
-//         cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool)
          
          return cell
     }
