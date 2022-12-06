@@ -82,6 +82,15 @@ class MatchTableViewController: UITableViewController {
         cell.blueTeamLabel.text = blueTeamNames
         cell.redTeamLabel.text = redTeamNames
         
+        var agentNamePic = ""
+        if(agentsPlayed[indexPath.row] == "KAY/O"){
+            agentNamePic = "agent_Kayo"
+        }
+        else{
+            agentNamePic = "agent_" + agentsPlayed[indexPath.row]
+
+        }
+        cell.operatorView.image = UIImage(named: agentNamePic)
 //
 //         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
 //         let data = try? Data(contentsOf: imageUrl!)

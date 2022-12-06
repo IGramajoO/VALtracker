@@ -14,6 +14,7 @@ class MatchViewCell: UITableViewCell {
     @IBOutlet weak var redTeamLabel: UILabel!
     @IBOutlet weak var blueTeamLabel: UILabel!
     @IBOutlet weak var agentLabel: UILabel!
+    @IBOutlet weak var operatorView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
