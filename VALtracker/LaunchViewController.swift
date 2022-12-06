@@ -50,7 +50,9 @@ class LaunchViewController: UIViewController {
     
     
     func req(){
-        let url = URL(string: "https://api.henrikdev.xyz/valorant/v1/mmr/na/petes/3333")!
+        //NAME AND TAGLINE GO HERE LIKE THIS na/\(nameID)/\(tagline)
+        // nameID and tagline come from the variables after the character split in ViewDidLoad before the req() call
+        let url = URL(string: "https://api.henrikdev.xyz/valorant/v3/matches/na/petes/3333")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -58,29 +60,94 @@ class LaunchViewController: UIViewController {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print(dataDictionary)
-                print("-------------------")
+                let dataDict = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                //                print(dataDict)
+                                let arr = dataDict["data"] as! [[String: Any]]
+                               // print("--------------------------------------------------------")
+                //                print(arr[1]["players"])
+                              //  print("========================================================")
+                                let arrB = arr[1]["metadata"] as! [String: Any]
+                                let arrA = arr[0]["metadata"] as! [String: Any]
+                               // print(arrA)
+                              //  print("*************")
+                               // print(arrB)
+                print("***********")
+               //either red or blue team
+                var myTeamsArray = []
+                var enemyTeamsArray = []
+            
+              //scored depedning on if the users team is red or blue. The opposite is put into enemyTeamScores
+                var myTeamScores = []
+                var enemyTeamScores = []
+                var agentsPlayed = []
+                var myTeam = "none"
+                var name = "noName"
                 
-                let data = dataDictionary["data"] as! [String: Any]
-                for (key, value) in data {
-                    print("(\(key),\(value))")
+                for i in 0...4{
+                    let players = arr[i]["players"] as! [String: Any]
+                    let indv = players["all_players"] as! Array<Any>
+                    var me = indv[0] as! [String: Any]
+                    var keyIndexPlayer = 0
+            
+                    for i in 0...9{
+                        me = indv[i] as! [String: Any]
+                        name = me["name"] as! String
+                        //NAME CHANGE HERE
+                        if(name as! String == "petes"){
+                            keyIndexPlayer = i
+                            myTeam = me["team"] as! String
+                            myTeamsArray.append(myTeam)
+                            agentsPlayed.append(me["character"] as! String)
+                            break
+                        }
+                    }
                 }
+                //fill in red or blue teams in enemyTeamsArray
+//                for i in 0...4{
+//                    if(myTeamsArray[i] as! String == "Red"){
+//                        enemyTeamsArray.append("Blue")
+//                    }
+//                    else{
+//                        enemyTeamsArray.append("Red")
+//                    }
+//                }
                 
-                print("-------------------")
-                print(data["name"] as! String)
+               // let me = indv[1] as! [String: Any]
+               // let name = me["name"]
+                print(name)
+                //print(myTeam)
+                print(myTeamsArray)
+                print(enemyTeamsArray)
                 
-                //                print(self.data)
-                // let dict: [[String:Any]]() = dataDictionary["data"]
-                //print(dict{0})
-                //  self.mmr = dataDictionary["data"] as! [[String:Any]]
-                //let mmrArray = self.mmr[indexPath.row]
-                //print(mmr["name"])
-                //  print(self.mmr)
-                //
-                // TODO: Get the array of movies
-                // TODO: Store the movies in a property to use elsewhere
-                // TODO: Reload your table view data
+                var redTeam = []
+                var blueTeam = []
+                for i in 0...4{
+                    let teams = arr[i]["teams"] as! [String: Any]
+                    let red = teams["red"] as! [String: Any]
+                    let blue = teams["blue"] as! [String: Any]
+                    redTeam.append(red["rounds_won"] as! Int)
+                    blueTeam.append(blue["rounds_won"] as! Int)
+                }
+                print(redTeam)
+                print(blueTeam)
+                
+                for i in 0...4{
+                    if(myTeamsArray[i] as! String == "Red"){
+                        myTeamScores.append(redTeam[i] as! Int)
+                        enemyTeamScores.append(blueTeam[i] as! Int)
+                    }
+                    else{
+                        myTeamScores.append(blueTeam[i] as! Int)
+                        enemyTeamScores.append(redTeam[i] as! Int)
+                    }
+                }
+                print("##############")
+                print(myTeamScores)
+                print(enemyTeamScores)
+                print("^^^^^^^^^^^^^^^^^^^")
+                print(agentsPlayed)
+                
+                
                 
             }
         }
