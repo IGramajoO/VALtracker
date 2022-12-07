@@ -21,6 +21,7 @@ class LandingViewController: UIViewController {
     var mySide: [Int] = []
     var redTeamPlayers = [[String]]()
     var blueTeamPlayers = [[String]]()
+    var mapsPlayed: [String] = []
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
@@ -102,9 +103,9 @@ class LandingViewController: UIViewController {
                     
                     for i in 0...9{
                         me = indv[i] as! [String: Any]
-//                        print("==================")
-//                        print(me)
-//                        print("==================")
+                        print("==================")
+                        print(me) //me["stats"] for KDA
+                        print("==================")
                         name = me["name"] as! String
                         //NAME CHANGE HERE
                         if(me["team"] as! String == "Red"){

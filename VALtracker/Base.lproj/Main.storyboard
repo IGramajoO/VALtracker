@@ -235,12 +235,20 @@
                                             <rect key="frame" x="-1" y="0.0" width="392" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="13 - 13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mK-rs-r0h" userLabel="scoreLabel">
-                                            <rect key="frame" x="122" y="17" width="143" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 - 13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="2mK-rs-r0h" userLabel="scoreLabel">
+                                            <rect key="frame" x="149.81482523108889" y="20" width="90" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="180.00000000000003" id="q7R-IN-fUP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Team" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="sU0-ox-Gll" userLabel="redTeamLabel">
+                                            <rect key="frame" x="238" y="20" width="141" height="149"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -251,30 +259,25 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Blue Team" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZl-y1-pxB" userLabel="blueTeamLabel">
-                                            <rect key="frame" x="7" y="16" width="143" height="149"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue Team" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SZl-y1-pxB" userLabel="blueTeamLabel">
+                                            <rect key="frame" x="7" y="20" width="143" height="149"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7e-fp-Jgb" userLabel="operatorView">
-                                            <rect key="frame" x="148" y="65" width="90" height="115"/>
+                                            <rect key="frame" x="150" y="65" width="90" height="115"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Red Team" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU0-ox-Gll" userLabel="redTeamLabel">
-                                            <rect key="frame" x="238" y="17" width="141" height="149"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="sU0-ox-Gll" firstAttribute="leading" secondItem="2mK-rs-r0h" secondAttribute="trailing" constant="41.333333333333258" id="0yq-mz-p5j"/>
+                                        <constraint firstItem="sU0-ox-Gll" firstAttribute="leading" secondItem="2mK-rs-r0h" secondAttribute="trailing" id="0yq-mz-p5j"/>
                                         <constraint firstItem="sU0-ox-Gll" firstAttribute="top" secondItem="08e-aa-FlG" secondAttribute="topMargin" constant="9" id="J8S-Jg-w89"/>
                                         <constraint firstItem="SZl-y1-pxB" firstAttribute="leading" secondItem="08e-aa-FlG" secondAttribute="leadingMargin" constant="5" id="Qw6-RR-qAx"/>
                                         <constraint firstItem="2mK-rs-r0h" firstAttribute="centerX" secondItem="08e-aa-FlG" secondAttribute="centerX" id="aQd-S8-USx"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="sU0-ox-Gll" secondAttribute="trailing" constant="5" id="aun-HV-T4c"/>
-                                        <constraint firstItem="2mK-rs-r0h" firstAttribute="leading" secondItem="SZl-y1-pxB" secondAttribute="trailing" constant="7.9999999999999858" id="f0w-mI-0B6"/>
+                                        <constraint firstItem="2mK-rs-r0h" firstAttribute="leading" secondItem="SZl-y1-pxB" secondAttribute="trailing" id="f0w-mI-0B6"/>
                                         <constraint firstItem="2mK-rs-r0h" firstAttribute="top" secondItem="08e-aa-FlG" secondAttribute="topMargin" constant="5" id="gJJ-6F-uP3"/>
                                         <constraint firstItem="SZl-y1-pxB" firstAttribute="top" secondItem="08e-aa-FlG" secondAttribute="topMargin" constant="9" id="ksi-BS-Ujw"/>
                                     </constraints>
