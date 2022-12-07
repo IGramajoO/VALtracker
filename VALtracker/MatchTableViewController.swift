@@ -15,6 +15,7 @@ class MatchTableViewController: UITableViewController {
     var redTeam: [[String]] = []
     var blueTeam: [[String]] = []
     var mySide: [Int] = []
+    var mapsPlayed: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,8 +82,10 @@ class MatchTableViewController: UITableViewController {
         }
         cell.blueTeamLabel.text = blueTeamNames
         cell.redTeamLabel.text = redTeamNames
-        
+        var mapName = ""
         var agentNamePic = ""
+        
+        mapName = mapsPlayed[indexPath.row]
         if(agentsPlayed[indexPath.row] == "KAY/O"){
             agentNamePic = "agent_Kayo"
         }
@@ -91,7 +94,8 @@ class MatchTableViewController: UITableViewController {
 
         }
         cell.operatorView.image = UIImage(named: agentNamePic)
-//
+        cell.mapView.image = UIImage(named: mapName)
+
 //         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
 //         let data = try? Data(contentsOf: imageUrl!)
 //

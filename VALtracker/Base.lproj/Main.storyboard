@@ -231,7 +231,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6192215" translatesAutoresizingMaskIntoConstraints="NO" id="tky-x6-gMu" userLabel="backgroundView">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6192215" translatesAutoresizingMaskIntoConstraints="NO" id="tky-x6-gMu" userLabel="mapView">
                                             <rect key="frame" x="-1" y="0.0" width="392" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -285,6 +285,7 @@
                                 <connections>
                                     <outlet property="agentLabel" destination="T7p-ta-lVo" id="TbQ-Bu-YZ3"/>
                                     <outlet property="blueTeamLabel" destination="SZl-y1-pxB" id="UeP-UG-aMM"/>
+                                    <outlet property="mapView" destination="tky-x6-gMu" id="uK8-qG-3wY"/>
                                     <outlet property="operatorView" destination="e7e-fp-Jgb" id="Dvc-fq-yoL"/>
                                     <outlet property="redTeamLabel" destination="sU0-ox-Gll" id="vYH-sw-Us5"/>
                                     <outlet property="scoreLabel" destination="2mK-rs-r0h" id="ZaR-af-ZaO"/>
