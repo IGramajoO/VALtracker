@@ -21,28 +21,6 @@ class MatchTableViewController: UITableViewController {
         super.viewDidLoad()
         
     }
-    
-    @objc func loadMatches(){
-        
-//        numberOfTweet = 20
-//        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-//        let myParams = ["count": numberOfTweet]
-        
-//        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success:
-//            { (tweets: [NSDictionary]) in
-//
-//            self.tweetArray.removeAll()
-//            for tweet in tweets{
-//                self.tweetArray.append(tweet)
-//            }
-//            self.tableView.reloadData()
-//            self.refreshControl?.endRefreshing()
-//
-//        }, failure: { (Error) in
-//            print("Could not retrieve tweets!")
-//        })
-        
-    }
 
     // MARK: - Table view data source
     
@@ -51,7 +29,7 @@ class MatchTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 1
     }
 
@@ -95,15 +73,6 @@ class MatchTableViewController: UITableViewController {
         }
         cell.operatorView.image = UIImage(named: agentNamePic)
         cell.mapView.image = UIImage(named: mapName)
-
-//         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
-//         let data = try? Data(contentsOf: imageUrl!)
-//
-//         if let imageData = data {
-//
-//             cell.profileImage.image = UIImage(data: imageData)
-//         }
-//
          
          return cell
     }
