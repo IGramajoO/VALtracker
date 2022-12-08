@@ -21,6 +21,7 @@ class LandingViewController: UIViewController {
     var mySide: [Int] = []
     var redTeamPlayers = [[String]]()
     var blueTeamPlayers = [[String]]()
+    var mapsPlayed: [String] = []
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var IDField: UITextField!
@@ -91,14 +92,16 @@ class LandingViewController: UIViewController {
 
                 var myTeam = "none"
                 var name = "noName"
-
                 
                 for k in 0...4{
+                    let metadata = arr[k]["metadata"] as! [String: Any]
                     let players = arr[k]["players"] as! [String: Any]
                     let indv = players["all_players"] as! Array<Any>
                     let testPlayers = []
                     var redTeamP = [String]()
                     var blueTeamP = [String]()
+                    
+                    self.mapsPlayed.append(metadata["map"] as! String)
                     
                     var me = indv[0] as! [String: Any]
                     var keyIndexPlayer = 0
@@ -106,7 +109,7 @@ class LandingViewController: UIViewController {
                     for i in 0...9{
                         me = indv[i] as! [String: Any]
 //                        print("==================")
-//                        print(me)
+//                        print(me["stats"]) //me["stats"] for KDA
 //                        print("==================")
                         name = me["name"] as! String
                         //NAME CHANGE HERE
@@ -131,8 +134,9 @@ class LandingViewController: UIViewController {
                 }
                 print("==================")
 
-                print(self.redTeamPlayers)
-                print(self.blueTeamPlayers)
+//                print(self.redTeamPlayers)
+//                print(self.blueTeamPlayers)
+//                print(arr[i])
                 print("==================")
 
 
@@ -198,6 +202,7 @@ class LandingViewController: UIViewController {
             displayVC.redTeam = redTeamPlayers
             displayVC.blueTeam = blueTeamPlayers
             displayVC.mySide = mySide
+            displayVC.mapsPlayed = mapsPlayed
         }
         
         if(segue.identifier == "landingVCtoMmrVC"){

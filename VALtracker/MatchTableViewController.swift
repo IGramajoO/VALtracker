@@ -15,31 +15,10 @@ class MatchTableViewController: UITableViewController {
     var redTeam: [[String]] = []
     var blueTeam: [[String]] = []
     var mySide: [Int] = []
+    var mapsPlayed: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    @objc func loadMatches(){
-        
-//        numberOfTweet = 20
-//        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-//        let myParams = ["count": numberOfTweet]
-        
-//        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success:
-//            { (tweets: [NSDictionary]) in
-//
-//            self.tweetArray.removeAll()
-//            for tweet in tweets{
-//                self.tweetArray.append(tweet)
-//            }
-//            self.tableView.reloadData()
-//            self.refreshControl?.endRefreshing()
-//
-//        }, failure: { (Error) in
-//            print("Could not retrieve tweets!")
-//        })
         
     }
 
@@ -50,7 +29,7 @@ class MatchTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 1
     }
 
@@ -81,16 +60,19 @@ class MatchTableViewController: UITableViewController {
         }
         cell.blueTeamLabel.text = blueTeamNames
         cell.redTeamLabel.text = redTeamNames
+        var mapName = ""
+        var agentNamePic = ""
         
-//
-//         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
-//         let data = try? Data(contentsOf: imageUrl!)
-//
-//         if let imageData = data {
-//
-//             cell.profileImage.image = UIImage(data: imageData)
-//         }
-//
+        mapName = mapsPlayed[indexPath.row]
+        if(agentsPlayed[indexPath.row] == "KAY/O"){
+            agentNamePic = "agent_Kayo"
+        }
+        else{
+            agentNamePic = "agent_" + agentsPlayed[indexPath.row]
+
+        }
+        cell.operatorView.image = UIImage(named: agentNamePic)
+        cell.mapView.image = UIImage(named: mapName)
          
          return cell
     }
