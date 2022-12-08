@@ -27,6 +27,9 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var IDLabel: UILabel!
     @IBOutlet weak var viewMatchLabel: UIButton!
     
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    
     override func viewWillAppear(_ animated: Bool) {
         let currentUser = PFUser.current()
         welcomeLabel.text = "Welcome, " + (currentUser?.username ?? "NULL") + "!"
@@ -179,6 +182,11 @@ class LandingViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func sendToSearchScreen(_ sender: Any) {
+        self.performSegue(withIdentifier: "landingVCtoMmrVC", sender: self)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -190,6 +198,11 @@ class LandingViewController: UIViewController {
             displayVC.redTeam = redTeamPlayers
             displayVC.blueTeam = blueTeamPlayers
             displayVC.mySide = mySide
+        }
+        
+        if(segue.identifier == "landingVCtoMmrVC"){
+            let displayVC = segue.destination as! MmrSearchViewController
+            displayVC.id = searchTextField.text
         }
     }
     
