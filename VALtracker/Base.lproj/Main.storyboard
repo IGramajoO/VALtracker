@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21223" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21204"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -182,6 +182,8 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="searchById:" destination="xNU-8x-YUL" eventType="touchUpInside" id="4H7-Jm-d2w"/>
+                                    <action selector="sendToSearchScreen:" destination="xNU-8x-YUL" eventType="touchUpInside" id="AYi-Tw-pLD"/>
+                                    <segue destination="vle-cc-1Lk" kind="presentation" identifier="landingVCtoMmrVC" id="fFk-ji-Or6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdR-pX-dgt">
@@ -207,6 +209,8 @@
                     <connections>
                         <outlet property="IDField" destination="nCf-9j-EHa" id="EFF-Ce-axK"/>
                         <outlet property="IDLabel" destination="45D-pG-WJA" id="ehy-0c-Oof"/>
+                        <outlet property="searchButton" destination="u1W-0f-XGn" id="gaU-xt-0SC"/>
+                        <outlet property="searchTextField" destination="nCf-9j-EHa" id="4G6-cr-76v"/>
                         <outlet property="viewMatchLabel" destination="7kO-SI-1Xi" id="7Db-zH-Jho"/>
                         <outlet property="welcomeLabel" destination="Hke-cm-tGO" id="tga-XZ-aJB"/>
                     </connections>
@@ -375,7 +379,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="p8Y-cY-2Jz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cs5-AG-fbK">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -388,6 +392,9 @@
             <point key="canvasLocation" x="1016.9230769230769" y="15.639810426540283"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fFk-ji-Or6"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="6192215" width="2048" height="1024"/>
         <systemColor name="systemBackgroundColor">
