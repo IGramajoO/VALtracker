@@ -47,13 +47,17 @@ class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(id as! String)
+        //print(id as! String)
         var result = id?.split(separator: ch)
         nameID = String(result![0])
         tagline = String(result![1])
         print(nameID, " ", tagline)
         reqAccountInfo()
         reqMmrData()
+        
+        //FOR MATCHES CALL THIS TO GET DATA AND USE THIS DATA.
+        reqMatches()
+      
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -281,6 +285,10 @@ class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableVie
 //                print(self.agentsPlayed)
                 
             }
+            print(self.myTeamScores)
+            print(self.agentsPlayed)
+            print(self.mapsPlayed)
+          
         }
         
 //        viewMatchLabel.alpha = 1.0
