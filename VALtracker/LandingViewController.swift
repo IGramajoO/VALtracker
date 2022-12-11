@@ -208,6 +208,13 @@ class LandingViewController: UIViewController {
         if(segue.identifier == "landingVCtoMmrVC"){
             let displayVC = segue.destination as! MmrSearchViewController
             displayVC.id = searchTextField.text
+            displayVC.myTeamScores = myTeamScores
+            displayVC.enemyTeamScores = enemyTeamScores
+            displayVC.agentsPlayed = agentsPlayed
+            displayVC.redTeamPlayers = redTeamPlayers
+            displayVC.blueTeamPlayers = blueTeamPlayers
+            displayVC.mySide = mySide
+            displayVC.mapsPlayed = mapsPlayed
         }
     }
     

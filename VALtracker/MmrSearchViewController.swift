@@ -10,8 +10,10 @@ import AlamofireImage
 import Foundation
 
 
-class MmrSearchViewController: UIViewController {
+class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet weak var tableView: UITableView!
     
     //var id = String();
     var id: String?
@@ -52,6 +54,9 @@ class MmrSearchViewController: UIViewController {
         print(nameID, " ", tagline)
         reqAccountInfo()
         reqMmrData()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -281,5 +286,59 @@ class MmrSearchViewController: UIViewController {
 //        viewMatchLabel.alpha = 1.0
         task.resume()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0;
     }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return myTeamScores.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "matchViewCell", for: indexPath) as! MatchViewCell
+        
+        cell.scoreLabel.text = String(myTeamScores[indexPath.row]) + " - " + String(enemyTeamScores[indexPath.row])
+        cell.agentLabel.text = agentsPlayed[indexPath.row]
+        var blueTeamNames = ""
+        var redTeamNames = ""
+        
+        //TODO check for users
+        for i in 0...4{
+            //if red team, swap side
+            if(mySide[indexPath.row] == 1){
+                blueTeamNames += redTeamPlayers[indexPath.row][i] + "\n"
+                redTeamNames += blueTeamPlayers[indexPath.row][i] + "\n"
+            }
+            else{
+                blueTeamNames += blueTeamPlayers[indexPath.row][i] + "\n"
+                redTeamNames += redTeamPlayers[indexPath.row][i] + "\n"
+            }
+        }
+        cell.blueTeamLabel.text = blueTeamNames
+        cell.redTeamLabel.text = redTeamNames
+        var mapName = ""
+        var agentNamePic = ""
+        
+        mapName = mapsPlayed[indexPath.row]
+        if(agentsPlayed[indexPath.row] == "KAY/O"){
+            agentNamePic = "agent_Kayo"
+        }
+        else{
+            agentNamePic = "agent_" + agentsPlayed[indexPath.row]
+
+        }
+        cell.operatorView.image = UIImage(named: agentNamePic)
+        cell.mapView.image = UIImage(named: mapName)
+         
+         return cell
+    }
+}
 
