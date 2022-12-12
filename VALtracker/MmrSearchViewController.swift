@@ -45,18 +45,43 @@ class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var pfpImageView: UIImageView!
     
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        let result = id?.split(separator: ch)
+        nameID = String(result![0])
+        tagline = String(result![1])
+        tableView.delegate = self
+        tableView.dataSource = self
+        print("-=-=-==--==-=-=-=-")
+        print(nameID, " ", tagline)
+        print("-=-=-==--==-=-=-=-")
+                reqAccountInfo()
+                reqMmrData()
+        reqMatches()
+        
+        self.tableView.reloadData()
+        let seconds = 4.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            // Put your code which should be executed with a delay here
+            self.tableView.reloadData()
+            self.reqMatches()
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(id as! String)
         var result = id?.split(separator: ch)
-        nameID = String(result![0])
-        tagline = String(result![1])
-        print(nameID, " ", tagline)
-        reqAccountInfo()
-        reqMmrData()
-        
         tableView.delegate = self
         tableView.dataSource = self
+//        nameID = String(result![0])
+//        tagline = String(result![1])
+//        print(nameID, " ", tagline)
+//        reqAccountInfo()
+//        reqMmrData()
+
         // Do any additional setup after loading the view.
     }
     
@@ -337,8 +362,9 @@ class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         cell.operatorView.image = UIImage(named: agentNamePic)
         cell.mapView.image = UIImage(named: mapName)
-         
-         return cell
+
+        return cell
+        
     }
 }
 
