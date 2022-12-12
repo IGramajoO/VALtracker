@@ -9,6 +9,14 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
+    var myTeamScores: [Int] = []
+    var enemyTeamScores: [Int] = []
+    var agentsPlayed: [String] = []
+    var mySide: [Int] = []
+    var redTeamPlayers = [[String]]()
+    var blueTeamPlayers = [[String]]()
+    var mapsPlayed: [String] = []
+    
     @IBOutlet weak var searchTextField: UITextField!
     //var jsonData;
     var mmr = [[String:Any]]()
@@ -37,6 +45,13 @@ class LaunchViewController: UIViewController {
         if(segue.identifier == "launchVCtoMmrVC"){
             let displayVC = segue.destination as! MmrSearchViewController
             displayVC.id = searchTextField.text
+            displayVC.myTeamScores = myTeamScores
+            displayVC.enemyTeamScores = enemyTeamScores
+            displayVC.agentsPlayed = agentsPlayed
+            displayVC.redTeamPlayers = redTeamPlayers
+            displayVC.blueTeamPlayers = blueTeamPlayers
+            displayVC.mySide = mySide
+            displayVC.mapsPlayed = mapsPlayed
         }
     }
     

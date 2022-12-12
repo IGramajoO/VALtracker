@@ -10,8 +10,10 @@ import AlamofireImage
 import Foundation
 
 
-class MmrSearchViewController: UIViewController {
+class MmrSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet weak var tableView: UITableView!
     
     //var id = String();
     var id: String?
@@ -21,6 +23,15 @@ class MmrSearchViewController: UIViewController {
     var elo = 0;
     //    var result = id.split(separator: ch)
     //    print("Result : \(result)")
+    
+    //For recent matches
+    var myTeamScores: [Int] = []
+    var enemyTeamScores: [Int] = []
+    var agentsPlayed: [String] = []
+    var mySide: [Int] = []
+    var redTeamPlayers = [[String]]()
+    var blueTeamPlayers = [[String]]()
+    var mapsPlayed: [String] = []
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -34,15 +45,43 @@ class MmrSearchViewController: UIViewController {
     
     @IBOutlet weak var pfpImageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(id as! String)
-        var result = id?.split(separator: ch)
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        let result = id?.split(separator: ch)
         nameID = String(result![0])
         tagline = String(result![1])
+        tableView.delegate = self
+        tableView.dataSource = self
+        print("-=-=-==--==-=-=-=-")
         print(nameID, " ", tagline)
-        reqAccountInfo()
-        reqMmrData()
+        print("-=-=-==--==-=-=-=-")
+                reqAccountInfo()
+                reqMmrData()
+        reqMatches()
+        
+        self.tableView.reloadData()
+        let seconds = 4.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            // Put your code which should be executed with a delay here
+            self.tableView.reloadData()
+            self.reqMatches()
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //print(id as! String)
+        var result = id?.split(separator: ch)
+        tableView.delegate = self
+        tableView.dataSource = self
+//        nameID = String(result![0])
+//        tagline = String(result![1])
+//        print(nameID, " ", tagline)
+//        reqAccountInfo()
+//        reqMmrData()
+
         // Do any additional setup after loading the view.
     }
     
@@ -153,5 +192,183 @@ class MmrSearchViewController: UIViewController {
              */
             
         }
+    
+    func reqMatches(){
+//        viewMatchLabel.isEnabled = false
+
+        //NAME AND TAGLINE GO HERE LIKE THIS na/\(nameID)/\(tagline)
+        // nameID and tagline come from the variables after the character split in ViewDidLoad before the req() call
+        let url = URL(string: "https://api.henrikdev.xyz/valorant/v3/matches/na/\(nameID)/\(tagline)")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                let dataDict = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                //                print(dataDict)
+                let arr = dataDict["data"] as! [[String: Any]]
+           
+                // print(arrA)
+                //  print("*************")
+                // print(arrB)
+//                print("***********")
+                //either red or blue team
+                var myTeamsArray = []
+                var enemyTeamsArray = []
+                
+                //scored depedning on if the users team is red or blue. The opposite is put into enemyTeamScores
+
+                var myTeam = "none"
+                var name = "noName"
+                
+                for k in 0...4{
+                    let metadata = arr[k]["metadata"] as! [String: Any]
+                    let players = arr[k]["players"] as! [String: Any]
+                    let indv = players["all_players"] as! Array<Any>
+                    let testPlayers = []
+                    var redTeamP = [String]()
+                    var blueTeamP = [String]()
+                    
+                    self.mapsPlayed.append(metadata["map"] as! String)
+                    
+                    var me = indv[0] as! [String: Any]
+                    var keyIndexPlayer = 0
+                    
+                    for i in 0...9{
+                        me = indv[i] as! [String: Any]
+//                        print("==================")
+//                        print(me["stats"]) //me["stats"] for KDA
+//                        print("==================")
+                        name = me["name"] as! String
+                        //NAME CHANGE HERE
+                        if(me["team"] as! String == "Red"){
+                            redTeamP.append(name)
+                        }
+                        else{
+                            blueTeamP.append(name)
+                        }
+                        
+                        if(name == self.nameID){
+                            keyIndexPlayer = i
+                            myTeam = me["team"] as! String
+                            myTeamsArray.append(myTeam)
+                            self.agentsPlayed.append(me["character"] as! String)
+//                            break
+                        }
+                    }
+                    self.redTeamPlayers.append(redTeamP)
+                    self.blueTeamPlayers.append(blueTeamP)
+
+                }
+                print("==================")
+
+//                print(self.redTeamPlayers)
+//                print(self.blueTeamPlayers)
+//                print(arr[i])
+                print("==================")
+
+
+                //print(name)
+                //print(myTeam)
+                //print(myTeamsArray)
+                //print(enemyTeamsArray)
+                
+                var redTeam = []
+                var blueTeam = []
+                for i in 0...4{
+                    let teams = arr[i]["teams"] as! [String: Any]
+                    let red = teams["red"] as! [String: Any]
+                    let blue = teams["blue"] as! [String: Any]
+                    redTeam.append(red["rounds_won"] as! Int)
+                    blueTeam.append(blue["rounds_won"] as! Int)
+                }
+//                print(redTeam)
+//                print(blueTeam)
+                
+                for i in 0...4{
+                    if(myTeamsArray[i] as! String == "Red"){
+                        self.mySide.append(1)
+                        self.myTeamScores.append(redTeam[i] as! Int)
+                        self.enemyTeamScores.append(blueTeam[i] as! Int)
+                    }
+                    else{
+                        self.mySide.append(0)
+                        self.myTeamScores.append(blueTeam[i] as! Int)
+                        self.enemyTeamScores.append(redTeam[i] as! Int)
+                    }
+                }
+//                print("##############")
+//                print(self.myTeamScores)
+//                print(self.enemyTeamScores)
+//                print("^^^^^^^^^^^^^^^^^^^")
+//                print(self.agentsPlayed)
+                
+            }
+            print(self.myTeamScores)
+            print(self.agentsPlayed)
+            print(self.mapsPlayed)
+          
+        }
+        
+//        viewMatchLabel.alpha = 1.0
+        task.resume()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0;
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return myTeamScores.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "matchViewCell", for: indexPath) as! MatchViewCell
+        
+        cell.scoreLabel.text = String(myTeamScores[indexPath.row]) + " - " + String(enemyTeamScores[indexPath.row])
+        cell.agentLabel.text = agentsPlayed[indexPath.row]
+        var blueTeamNames = ""
+        var redTeamNames = ""
+        
+        //TODO check for users
+        for i in 0...4{
+            //if red team, swap side
+            if(mySide[indexPath.row] == 1){
+                blueTeamNames += redTeamPlayers[indexPath.row][i] + "\n"
+                redTeamNames += blueTeamPlayers[indexPath.row][i] + "\n"
+            }
+            else{
+                blueTeamNames += blueTeamPlayers[indexPath.row][i] + "\n"
+                redTeamNames += redTeamPlayers[indexPath.row][i] + "\n"
+            }
+        }
+        cell.blueTeamLabel.text = blueTeamNames
+        cell.redTeamLabel.text = redTeamNames
+        var mapName = ""
+        var agentNamePic = ""
+        
+        mapName = mapsPlayed[indexPath.row]
+        if(agentsPlayed[indexPath.row] == "KAY/O"){
+            agentNamePic = "agent_Kayo"
+        }
+        else{
+            agentNamePic = "agent_" + agentsPlayed[indexPath.row]
+
+        }
+        cell.operatorView.image = UIImage(named: agentNamePic)
+        cell.mapView.image = UIImage(named: mapName)
+
+        return cell
+        
+    }
+}
 

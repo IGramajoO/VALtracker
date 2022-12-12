@@ -13,6 +13,7 @@
 		D23E7DA5291CDB5B00B19E2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */; };
 		D2ACA9C12938A7C900DDEB7E /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACA9C02938A7C900DDEB7E /* MatchTableViewController.swift */; };
 		D2B3B3172938B23B002E21D8 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3B3162938B23B002E21D8 /* LandingViewController.swift */; };
+		D2B3B31929454EC2002E21D8 /* mmrTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3B31829454EC2002E21D8 /* mmrTableViewController.swift */; };
 		D2C8F8AE2938ABBB00B5C67D /* MatchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F8AD2938ABBB00B5C67D /* MatchViewCell.swift */; };
 		D2DD410E28F803CE00D75D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410D28F803CE00D75D3A /* AppDelegate.swift */; };
 		D2DD411028F803CE00D75D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2ACA9C02938A7C900DDEB7E /* MatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		D2B3B3162938B23B002E21D8 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		D2B3B31829454EC2002E21D8 /* mmrTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mmrTableViewController.swift; sourceTree = "<group>"; };
 		D2C8F8AD2938ABBB00B5C67D /* MatchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewCell.swift; sourceTree = "<group>"; };
 		D2DD410A28F803CE00D75D3A /* VALtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VALtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DD410D28F803CE00D75D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				D2DD410D28F803CE00D75D3A /* AppDelegate.swift */,
 				D2DD410F28F803CE00D75D3A /* SceneDelegate.swift */,
 				D2DD411328F803CE00D75D3A /* Main.storyboard */,
+				D2B3B31829454EC2002E21D8 /* mmrTableViewController.swift */,
 				D2C8F8AD2938ABBB00B5C67D /* MatchViewCell.swift */,
 				D2ACA9C02938A7C900DDEB7E /* MatchTableViewController.swift */,
 				D23E7DA4291CDB5B00B19E2E /* LoginViewController.swift */,
@@ -227,6 +230,7 @@
 				D2DD410E28F803CE00D75D3A /* AppDelegate.swift in Sources */,
 				D2DD411028F803CE00D75D3A /* SceneDelegate.swift in Sources */,
 				D2ACA9C12938A7C900DDEB7E /* MatchTableViewController.swift in Sources */,
+				D2B3B31929454EC2002E21D8 /* mmrTableViewController.swift in Sources */,
 				D2C8F8AE2938ABBB00B5C67D /* MatchViewCell.swift in Sources */,
 				93AB4DE52922DD18001C1BAE /* MmrSearchViewController.swift in Sources */,
 			);
